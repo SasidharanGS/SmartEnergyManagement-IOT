@@ -16,7 +16,8 @@
 #define DEVICE "ESP32"
 
 extern WiFiMulti wifiMulti;
-void send_to_cloud(InfluxDBClient &client, float voltage, float current, float power, float energy, float frequency);
-void send_to_serial(float voltage, float current, float power, float energy, float frequency);
+void send_to_cloud(InfluxDBClient &client, float voltage, float current, float power, float energy, float frequency, int count);
+void send_to_serial(float voltage, float current, float power, float energy, float frequency, int count);
+void send_to_file(float voltage, float current, float power, float energy, float frequency, int count);
 
 #endif
