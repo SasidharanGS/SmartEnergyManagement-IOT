@@ -35,10 +35,6 @@ void send_to_serial(float voltage, float current, float power, float energy, flo
   Serial.print(energy);
   Serial.print(" Wh, Frequency: ");
   Serial.print(frequency);
-  Serial.println(" Hz, People Inside:");
+  Serial.print(" Hz, People Inside:");
   Serial.println(count);
-}
-
-void send_to_file(float voltage, float current, float power, float energy, float frequency, int count){
-
 }

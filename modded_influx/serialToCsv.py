@@ -3,7 +3,7 @@ import csv
 import re
 import time
 
-serial_port = '/dev/ttyACM0'
+serial_port = '/dev/ttyUSB0'
 
 ser = serial.Serial(serial_port, 115200)
 
@@ -22,6 +22,7 @@ with open('data.csv', 'a', newline='') as csv_file:
             
             if len(numeric_values) == len(column_names) - 1:
                 timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime())
+                print([timestamp] + numeric_values)
                 csv_writer.writerow([timestamp] + numeric_values)
 
     except KeyboardInterrupt:

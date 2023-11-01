@@ -67,7 +67,6 @@ void loop() {
   else {
       send_to_cloud(client, voltage, current, power, energy, frequency, people_inside);
       send_to_serial(voltage, current, power, energy, frequency, people_inside);
-      send_to_file(voltage, current, power, energy, frequency, people_inside);
   }
   delay(3000);
 }
