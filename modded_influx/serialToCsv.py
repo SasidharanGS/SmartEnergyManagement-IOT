@@ -14,15 +14,16 @@ with open('data.csv', 'a', newline='') as csv_file:
 
     if csv_file.tell() == 0:
         csv_writer.writerow(column_names)
+    
+    timestamp = time.strftime('%d-%m-%Y -> %H:%M:%S', time.gmtime())
 
     try:
         while True:
             line = ser.readline().decode('utf-8')
+            print(timestamp+"\n"+line)
             numeric_values = re.findall(r"[-+]?\d*\.\d+|\d+", line)
             
             if len(numeric_values) == len(column_names) - 1:
-                timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime())
-                print([timestamp] + numeric_values)
                 csv_writer.writerow([timestamp] + numeric_values)
 
     except KeyboardInterrupt:
