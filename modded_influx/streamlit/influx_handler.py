@@ -23,7 +23,7 @@ def get_influx_data(query):
 def get_historic_data():
     hq = f'''
     from(bucket:"{BUCKET}")
-        |> range(start: -7d)
+        |> range(start: -15d)
         |> filter(fn: (r) => r["_measurement"] == "{MEASUREMENT}")
         |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
     '''

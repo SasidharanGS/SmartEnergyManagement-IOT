@@ -31,19 +31,15 @@ def display_correlation(data):
 def display_statistics(data):
     if data:
         df = pd.read_csv(io.StringIO(data))
-        st.write(df)
+        selected_columns = ['current', 'energy', 'frequency', 'people_inside', 'power']
+        st.write(df[selected_columns])  # Displaying specific columns
 
-        numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
-        if not numeric_columns:
-            st.error("No numeric columns found in the DataFrame.")
-            return
-
+        avg_values = df[selected_columns].mean()  # Calculate mean for selected columns
         st.subheader("Average Values")
-        avg_values = df[numeric_columns].mean()
         fig_avg = px.bar(x=avg_values.index, y=avg_values.values, labels={'x': 'Measurements', 'y': 'Average Values'})
         st.plotly_chart(fig_avg, use_container_width=True)
 
         st.subheader("Correlation Graph")
-        display_correlation(df[numeric_columns])
+        display_correlation(df[selected_columns])  # Display correlation for selected columns
     else:
         st.error("Error retrieving data. Please check the connection or selected category.")

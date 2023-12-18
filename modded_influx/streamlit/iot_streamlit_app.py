@@ -28,7 +28,7 @@ def main():
     selected_subcategory = st.sidebar.radio("", ('Graphs', 'Statistics'))
 
     if selected_subcategory == 'Graphs':
-        display_line_graphs(data)
+        graphs(data)
     elif selected_subcategory == 'Statistics':
         display_statistics(data)
 
